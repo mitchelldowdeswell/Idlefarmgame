@@ -1,0 +1,10 @@
+FROM node:lts
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm ci
+RUN npx prisma generate
+
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run start"]

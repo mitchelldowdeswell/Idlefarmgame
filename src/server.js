@@ -28,6 +28,14 @@ app.use('/auth', authRoutes);
 app.use('/me', meRoutes);
 app.use('/save', saveRoutes);
 
+app.get("/", (req, res) => {
+  res.status(200).send("Idle Farm API is running.");
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true });
+});
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Idle Farm API listening on http://localhost:${port}`);
